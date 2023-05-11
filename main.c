@@ -16,11 +16,14 @@ int main(void)
 	if (!line)
 		perror("Can't allocate memory");
 
-	printf("#cisfun ");
-	getline(&line, &size, stdin);
+	while (1)
+	{
+		printf("#cisfun ");
+		getline(&line, &size, stdin);
 
-	av[0] = strtok(line, "\n");
-	printf("%s\n", av[0]);
+		av[0] = strtok(line, "\n");
+		printf("%s\n", av[0]);
+	}
 
 	free(line);
 	return (0);
