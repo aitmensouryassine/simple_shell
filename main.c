@@ -19,7 +19,9 @@ int main(void)
 	while (1)
 	{
 		printf("#cisfun ");
-		getline(&line, &size, stdin);
+
+		if (getline(&line, &size, stdin) == -1)
+			break;
 
 		av[0] = strtok(line, "\n");
 		printf("%s\n", av[0]);
