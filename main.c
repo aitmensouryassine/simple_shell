@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * main - Simple shell in c
@@ -9,12 +10,15 @@ int main(void)
 {
 	char *line;
 	size_t size = 1;
+	char *av[] = {NULL, NULL};
 
 	line = malloc(sizeof(char) * size);
 
 	printf("#cisfun ");
 	getline(&line, &size, stdin);
-	printf("%s\n", line);
+
+	av[0] = strtok(line, "\n");
+	printf("%s\n", av[0]);
 
 	free(line);
 	return (0);
