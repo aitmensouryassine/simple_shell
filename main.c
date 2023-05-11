@@ -13,6 +13,8 @@ int main(void)
 	char *av[] = {NULL, NULL};
 
 	line = malloc(sizeof(char) * size);
+	if (!line)
+		perror("Can't allocate memory");
 
 	printf("#cisfun ");
 	getline(&line, &size, stdin);
