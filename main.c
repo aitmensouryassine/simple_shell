@@ -4,9 +4,11 @@
 
 /**
  * main - Simple shell in c
+ * @argc: argument count
+ * @argv: argument vector
  * Return: Always 0
  */
-int main(void)
+int main(int argc __attribute__((unused)), char **argv)
 {
 	char *line;
 	size_t size = 1;
@@ -24,7 +26,7 @@ int main(void)
 			break;
 
 		av[0] = strtok(line, "\n");
-		printf("%s\n", av[0]);
+		printf("%s %s\n", argv[0], av[0]);
 	}
 
 	free(line);
