@@ -35,7 +35,7 @@ int main(int argc __attribute__((unused)), char **argv)
 			perror("Error forking parent process");
 		else if (pid == 0)
 		{
-			if(execve(av[0], av, NULL))
+			if (execve(av[0], av, NULL))
 				perror(argv[0]);
 		}
 		else
