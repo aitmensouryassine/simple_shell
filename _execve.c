@@ -1,5 +1,6 @@
-#include <unisted.h>
+#include <unistd.h>
 #include <sys/wait.h>
+#include <stdio.h>
 
 /**
  * _execve - execute program with a child process
