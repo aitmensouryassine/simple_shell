@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * _execve - execute program with a child process
@@ -12,6 +13,7 @@
 void _execve(char *cmd, char **args, char **env, char *name)
 {
 	pid_t pid = fork();
+	int i = 0;
 
 	if (pid == -1)
 		perror("Error forking parent process");
@@ -23,5 +25,10 @@ void _execve(char *cmd, char **args, char **env, char *name)
 	else
 	{
 		wait(NULL);
+
+		/* free args */
+		while (args[i])
+			free(args[i++]);
+		free(args);
 	}
 }
