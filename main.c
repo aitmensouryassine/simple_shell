@@ -13,11 +13,14 @@ int main(int argc __attribute__((unused)), char **argv)
 {
 	char *line;
 	size_t size = 1;
-	char *av[] = {NULL, NULL};
+	char **av;
 
 	line = malloc(sizeof(char) * size);
 	if (!line)
+	{
 		perror("Can't allocate memory");
+		return (1);
+	}
 
 	while (1)
 	{
@@ -26,7 +29,7 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&line, &size, stdin) == -1)
 			break;
 
-		av[0] = strtok(line, "\n");
+		av = create_av(line);
 
 		_execve(av[0], av, NULL, argv[0]);
 	}
