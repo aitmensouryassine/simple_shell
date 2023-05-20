@@ -1,3 +1,4 @@
+#include "main.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -20,8 +21,8 @@ char **create_av(char *line)
 	while (chop)
 	{
 		/* copy chop into arg */
-		av[size] = malloc(strlen(chop) + 1);
-		strcpy(av[size], chop);
+		av[size] = malloc(_strlen(chop) + 1);
+		_strcpy(av[size], chop);
 
 		/* get next chop from line */
 		chop = strtok(NULL, " \n");
