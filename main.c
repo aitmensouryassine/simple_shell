@@ -6,6 +6,7 @@
  * main - Simple shell in c
  * @argc: argument count
  * @argv: argument vector
+ * @env: the environment variable
  * Return: Always 0
  */
 int main(int argc __attribute__((unused)), char **argv, char **env)
