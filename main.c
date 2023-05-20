@@ -28,6 +28,12 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&line, &size, stdin) == -1)
 			break;
 
+		if (check_cmd(av) == 1)
+		{
+			printf("%s: No such file or directory\n", argv[0]);
+			continue;
+		}
+
 		av = create_av(line);
 
 		_execve(av[0], av, NULL, argv[0]);
