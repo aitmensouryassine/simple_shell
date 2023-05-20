@@ -45,3 +45,26 @@ void _strcat(char *dest, const char *src)
 	}
 	dest[dest_len + i] = '\0';
 }
+
+/**
+ * _strcmp - compares two strings
+ * @s1: the first string
+ * @s2: the second string
+ * Return: 0 if s1 and s2 are equal, negative/positif if s1 is less/greater
+ * then s2
+ */
+int _strcmp(const char *s1, const char *s2)
+{
+	int s1_len = _strlen(s1);
+	int s2_len = _strlen(s2);
+	int cmp = 0;
+	int i = 0;
+
+	while ((i < s1_len || i < s2_len) && cmp == 0)
+	{
+		cmp = s1[i] - s2[i];
+		i++;
+	}
+
+	return (cmp);
+}
