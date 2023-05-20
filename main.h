@@ -7,6 +7,7 @@ extern char **environ;
 void _execve(char *cmd, char **args, char **env, char *name);
 char **create_av(char *line);
 char *_getenv(const char *name);
+int check_cmd(char **av);
 
 /* HELPERS */
 int _strlen(const char *str);
