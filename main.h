@@ -3,6 +3,7 @@
 
 extern char **environ;
 #define EXIT "exit\n"
+#define ENTER "\n"
 
 /* FUNCTIONS */
 void _execve(char *cmd, char **args, char **env, char *name);
