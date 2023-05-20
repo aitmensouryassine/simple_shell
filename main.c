@@ -28,6 +28,12 @@ int main(int argc __attribute__((unused)), char **argv)
 		if (getline(&line, &size, stdin) == -1)
 			break;
 
+		if (_strcmp(line, EXIT) == 0)
+		{
+			free(line);
+			exit(0);
+		}
+
 		av = create_av(line);
 
 		if (check_cmd(av) == 1)

@@ -2,6 +2,7 @@
 #define MAIN_H
 
 extern char **environ;
+#define EXIT "exit\n"
 
 /* FUNCTIONS */
 void _execve(char *cmd, char **args, char **env, char *name);
