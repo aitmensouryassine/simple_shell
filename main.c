@@ -8,7 +8,7 @@
  * @argv: argument vector
  * Return: Always 0
  */
-int main(int argc __attribute__((unused)), char **argv)
+int main(int argc __attribute__((unused)), char **argv, char **env)
 {
 	char *line;
 	size_t size = 1;
@@ -45,7 +45,7 @@ int main(int argc __attribute__((unused)), char **argv)
 			continue;
 		}
 
-		_execve(av[0], av, NULL, argv[0]);
+		_execve(av[0], av, env, argv[0]);
 	}
 
 	free(line);
