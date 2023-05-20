@@ -26,3 +26,22 @@ void _strcpy(char *dest, const char *src)
 	}
 	dest[i] = '\0';
 }
+
+/**
+ * _strcpy - copy the source string to the destination string
+ * @dest: destination string
+ * @src: source string
+ */
+void _strcat(char *dest, const char *src)
+{
+	int dest_len = _strlen(dest);
+	int src_len = _strlen(src);
+	int i = 0;
+
+	while (i < src_len)
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	dest[dest_len + i] = '\0';
+}
