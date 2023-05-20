@@ -1,10 +1,12 @@
 /**
  * _strlen - returns the length of a string
  * @str: the string
+ * Return: the length of the string
  */
 int _strlen(const char *str)
 {
 	int len = 0;
+
 	while (str[len])
 		len++;
 	return (len);
@@ -28,7 +30,7 @@ void _strcpy(char *dest, const char *src)
 }
 
 /**
- * _strcpy - copy the source string to the destination string
+ * _strcat - copy the source string to the destination string
  * @dest: destination string
  * @src: source string
  */

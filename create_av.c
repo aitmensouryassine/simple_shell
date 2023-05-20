@@ -3,7 +3,7 @@
 #include <string.h>
 
 /**
- * create-av - creates av arguments for execve
+ * create_av - creates av arguments for execve
  * @line: the command
  * Return: return the created av variable, or NULL on failure
  */
