@@ -10,13 +10,13 @@
  */
 char *_getenv(const char *name)
 {
-	char **environ;
+	char **env = environ;
 	char tmp[PATH_MAX];
 	int i = 0;
 
-	while (environ[i])
+	while (env[i])
 	{
-		_strcpy(tmp, environ[i]);
+		_strcpy(tmp, env[i]);
 		if (_strcmp(strtok(tmp, "="), name) == 0)
 			return (strtok(NULL, "="));
 		i++;
