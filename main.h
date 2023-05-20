@@ -1,8 +1,12 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+extern char **environ;
+
+/* FUNCTIONS */
 void _execve(char *cmd, char **args, char **env, char *name);
 char **create_av(char *line);
+char *_getenv(const char *name);
 
 /* HELPERS */
 int _strlen(const char *str);
