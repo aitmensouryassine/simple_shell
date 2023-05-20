@@ -12,7 +12,7 @@ char *_getenv(const char *name)
 {
 	char **environ;
 	char tmp[PATH_MAX];
-	int i = 0, cmp;
+	int i = 0;
 
 	while (environ[i])
 	{
