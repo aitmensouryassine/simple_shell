@@ -9,38 +9,50 @@
  */
 char **create_av(char *line)
 {
-	int size = 0;
-	char *chop;
-	char **tmp, **av;
+	int i = 0, av_size = 0;
+	char *chop, *linecp, del[] = " \n";
+	char **av;
 
-	av = malloc(sizeof(*av) * (size + 1));
-	if (!av)
+	/* calculate args count (av_size) */
+	linecp = malloc(sizeof(char) * (_strlen(line) + 1));
+	if (!linecp)
+		return (NULL);
+	_strcpy(linecp, line);
+
+	chop = strtok(linecp, del);
+	while (chop)
+	{
+		av_size++;
+		chop = strtok(NULL, del);
+	}
+	free(linecp);
+
+	/* allocate need memory for av */
+	av = malloc(sizeof(*av) * (av_size + 1));
+	if(!av)
 		return (NULL);
 
-	chop = strtok(line, " \n");
+	/* assign line to av */
+	chop = strtok(line, del);
 	while (chop)
 	{
 		/* copy chop into arg */
-		av[size] = malloc(_strlen(chop) + 1);
-		_strcpy(av[size], chop);
+		av[i] = malloc(_strlen(chop) + 1);
+		if (!av[i])
+		{
+			while (i--)
+				free(av[i]);
+			free(av);
+			return (NULL);
+		}
+		_strcpy(av[i], chop);
 
 		/* get next chop from line */
 		chop = strtok(NULL, " \n");
 
-		/* increment size of av */
-		size++;
-		/* allocate memory */
-		tmp = realloc(av, sizeof(*av) * (size + 1));
-		if (!tmp)
-		{
-			while (size--)
-				free(av[size]);
-			free(av);
-			return (NULL);
-		}
-		av = tmp;
+		i++;
 	}
-	av[size] = NULL;
+	av[i] = NULL;
 
 	return (av);
 }
