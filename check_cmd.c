@@ -28,7 +28,10 @@ int check_cmd(char **av)
 
 		if (stat(cmd_path, &st) == 0)
 		{
-			av[0] = realloc(av[0], sizeof(cmd_path));
+			free(av[0]);
+			av[0] = malloc(sizeof(char) * (_strlen(cmd_path) + 1));
+			if (!av[0])
+				return (1);
 			_strcpy(av[0], cmd_path);
 			return (0);
 		}
