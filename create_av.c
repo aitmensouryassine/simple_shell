@@ -3,33 +3,51 @@
 #include <string.h>
 
 /**
+ * calculate_args - calculates number of args in command line
+ * @line: the command
+ * @del: the delimiter
+ * Return: number of args
+ */
+int calculate_args(char *line, char *del)
+{
+	int count = 0;
+	char *linecp, *chop;
+
+	linecp = malloc(sizeof(char) * (_strlen(line) + 1));
+	if (!linecp)
+		return (0);
+	_strcpy(linecp, line);
+
+	chop = strtok(linecp, del);
+	while (chop)
+	{
+		count++;
+		chop = strtok(NULL, del);
+	}
+	free(linecp);
+
+	return (count);
+}
+
+/**
  * create_av - creates av arguments for execve
  * @line: the command
  * Return: return the created av variable, or NULL on failure
  */
 char **create_av(char *line)
 {
-	int i = 0, av_size = 0;
-	char *chop, *linecp, del[] = " \n";
+	int i = 0, av_size;
+	char *chop, del[] = " \n";
 	char **av;
 
 	/* calculate args count (av_size) */
-	linecp = malloc(sizeof(char) * (_strlen(line) + 1));
-	if (!linecp)
+	av_size = calculate_args(line, del);
+	if (!av_size)
 		return (NULL);
-	_strcpy(linecp, line);
-
-	chop = strtok(linecp, del);
-	while (chop)
-	{
-		av_size++;
-		chop = strtok(NULL, del);
-	}
-	free(linecp);
 
 	/* allocate need memory for av */
 	av = malloc(sizeof(*av) * (av_size + 1));
-	if(!av)
+	if (!av)
 		return (NULL);
 
 	/* assign line to av */
