@@ -1,7 +1,16 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 
+/**
+ *
+ */
+void ctrl_c_handler()
+{
+	printf("\n$ ");
+	fflush(stdout);
+}
 /**
  * main - Simple shell in c
  * @argc: argument count
@@ -21,6 +30,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		perror("Can't allocate memory");
 		return (1);
 	}
+
+	signal(SIGINT, ctrl_c_handler);
 
 	while (1)
 	{
