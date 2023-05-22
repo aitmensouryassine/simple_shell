@@ -24,6 +24,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	}
 
 	signal(SIGINT, ctrl_c_handler);
+	signal(SIGTSTP, SIG_IGN);
 
 	while (1)
 	{

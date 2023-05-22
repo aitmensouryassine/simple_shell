@@ -5,6 +5,6 @@
  */
 void ctrl_c_handler()
 {
-        printf("\n$ ");
+	printf("\n$ ");
         fflush(stdout);
 }
