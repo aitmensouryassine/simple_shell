@@ -4,14 +4,6 @@
 #include <signal.h>
 
 /**
- *
- */
-void ctrl_c_handler()
-{
-	printf("\n$ ");
-	fflush(stdout);
-}
-/**
  * main - Simple shell in c
  * @argc: argument count
  * @argv: argument vector

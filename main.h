@@ -17,4 +17,7 @@ void _strcpy(char *dest, const char *src);
 void _strcat(char *dest, const char *src);
 int _strcmp(const char *s1, const char *s2);
 
+/* SIGNAL HANDLERS */
+void ctrl_c_handler();
+
 #endif
