@@ -1,10 +1,15 @@
 #include <stdio.h>
+#include <signal.h>
 
 /**
- * ctrl_c_handler - control C handler
+ * sigHandler - signals handler
+ * @sig: signal number
  */
-void ctrl_c_handler()
+void sigHandler(int sig)
 {
-	printf("\n$ ");
-        fflush(stdout);
+	if (sig == SIGINT)
+	{
+		printf("\n$ ");
+		fflush(stdout);
+	}
 }
