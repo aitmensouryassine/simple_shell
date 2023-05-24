@@ -15,7 +15,6 @@ char *_getenv(const char *name);
 int check_cmd(char **av);
 void tshell(char *line, size_t size, char **av, char **argv, char **env);
 void pshell(char *line, size_t size, char **av, char **argv, char **env);
-void _built_in_cd(char **argmts)
 
 /* HELPERS */
 int _strlen(const char *str);
@@ -23,19 +22,8 @@ void _strcpy(char *dest, const char *src);
 void _strcat(char *dest, const char *src);
 int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
-int chdir( const char * path );
-void _puts(char *_string);
 
 /* SIGNAL HANDLERS */
 void sigHandler(int sig);
-
-/*alias*/
-typedef struct alias
-{
-	char *key;
-	char *value;
-	struct alias *next;
-} alias;
-
 
 #endif
