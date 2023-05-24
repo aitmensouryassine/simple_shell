@@ -8,17 +8,31 @@
  * @name: The name of the variable
  * Return: return a pointer to the value of the env variable
  */
+
 char *_getenv(const char *name)
 {
 	char **env = environ;
-	char tmp[PATH_MAX];
-	int i = 0;
+	char *nametmp;
+	int i = 0, len = 0;
+
+	(void)len;
+
+	nametmp = malloc(sizeof(char) * (_strlen(name) + 2));
+	if (!nametmp)
+		return (NULL);
+
+	_strcpy(nametmp, name);
+	_strcat(nametmp, "=");
+	len = _strlen(nametmp);
 
 	while (env[i])
 	{
-		_strcpy(tmp, env[i]);
-		if (_strcmp(strtok(tmp, "="), name) == 0)
-			return (strtok(NULL, "="));
+		if (_strncmp(nametmp, env[i], len) == 0)
+		{
+			free(nametmp);
+			return (&env[i][len]);
+		}
+
 		i++;
 	}
 	return (NULL);
