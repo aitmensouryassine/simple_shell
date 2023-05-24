@@ -31,6 +31,8 @@ void tshell(char *line, size_t size, char **av, char **argv, char **env)
 		}
 
 		av = create_av(line);
+		if (!av)
+			continue;
 
 		if (check_cmd(av) == 1)
 		{
