@@ -1,8 +1,8 @@
 #include "main.h"
 #include <limits.h>
-#include <sys/stat.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * check_cmd - check if command exist, and return full path if it does
@@ -13,9 +13,8 @@ int check_cmd(char **av)
 {
 	char PATH_TMP[PATH_MAX], cmd_path[PATH_MAX];
 	char *chop;
-	struct stat st;
 
-	if (stat(av[0], &st) == 0)
+	if (access(av[0], X_OK) == 0)
 		return (0);
 
 	_strcpy(PATH_TMP, _getenv("PATH"));
@@ -26,7 +25,7 @@ int check_cmd(char **av)
 		_strcat(cmd_path, "/");
 		_strcat(cmd_path, av[0]);
 
-		if (stat(cmd_path, &st) == 0)
+		if (access(cmd_path, X_OK) == 0)
 		{
 			free(av[0]);
 			av[0] = malloc(sizeof(char) * (_strlen(cmd_path) + 1));

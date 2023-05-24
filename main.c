@@ -29,6 +29,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	while (1)
 	{
 		printf("$ ");
+		fflush(stdout);
+
 		if (getline(&line, &size, stdin) == -1)
 			break;
 		if (_strcmp(line, ENTER) == 0)
