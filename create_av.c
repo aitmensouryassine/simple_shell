@@ -37,7 +37,7 @@ int calculate_args(char *line, char *del)
 char **create_av(char *line)
 {
 	int i = 0, av_size;
-	char *chop, del[] = " \n";
+	char *chop, del[] = " \t\n";
 	char **av;
 
 	/* calculate args count (av_size) */
@@ -66,7 +66,7 @@ char **create_av(char *line)
 		_strcpy(av[i], chop);
 
 		/* get next chop from line */
-		chop = strtok(NULL, " \n");
+		chop = strtok(NULL, del);
 
 		i++;
 	}
