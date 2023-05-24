@@ -152,3 +152,30 @@ void pnum(int n)
 	write(STDOUT_FILENO, &num, 1);
 }
 
+/**
+ * _atoi - To convert a string into an integer.
+ * @_string: The string to convert.
+ *
+ * Return: The integer value of the string.
+ */
+int _atoi(const char *_string)
+{
+	int j, _sign;
+	unsigned int _num;
+
+	j = 0;
+	_sign = 1;
+	_num = 0;
+
+	while (_string[j] != '\0')
+	{
+		if (_string[j] == '-')
+			_sign *= -1;
+		else if (_string[j] >= '0' && _string[j] <= '9')
+			_num = (_num * 10) + (_string[j] - '0');
+		else
+			break;
+		j++;
+	}
+	return (_num * _sign);
+}
