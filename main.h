@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdio.h>
+
 extern char **environ;
 #define EXIT "exit\n"
 #define ENTER "\n"
@@ -16,8 +18,9 @@ int _strlen(const char *str);
 void _strcpy(char *dest, const char *src);
 void _strcat(char *dest, const char *src);
 int _strcmp(const char *s1, const char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* SIGNAL HANDLERS */
-void ctrl_c_handler();
+void sigHandler(int sig);
 
 #endif

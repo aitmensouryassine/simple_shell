@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /**
  * _strlen - returns the length of a string
  * @str: the string
@@ -65,6 +67,31 @@ int _strcmp(const char *s1, const char *s2)
 	while ((i < s1_len || i < s2_len) && cmp == 0)
 	{
 		cmp = s1[i] - s2[i];
+		i++;
+	}
+
+	return (cmp);
+}
+
+/**
+ * _strncmp - compares first @n bytes of two strings
+ * @s1: the first string
+ * @s2: the second string
+ * @n: first n bytes to compare
+ * Return: 0 if s1 and s2 are equal, negative/positif if s1 is less/greater
+ * then s2
+ */
+int _strncmp(const char *s1, const char *s2, size_t n)
+{
+	int cmp = 0;
+	size_t i = 0;
+
+	while (i < n && (s1[i] || s2[i]))
+	{
+		cmp = s1[i] - s2[i];
+		if (cmp != 0)
+			return (cmp);
+
 		i++;
 	}
 
