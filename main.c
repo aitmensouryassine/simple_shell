@@ -15,9 +15,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 {
 	char *line;
 	size_t size = 1;
-	char **av;
-	char prompt[] = "$ ";
-	char notfound[] = ": No such file or directory\n";
+	char **av = NULL;
 
 	line = malloc(sizeof(char) * size);
 	if (!line)
@@ -25,31 +23,18 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		perror("Can't allocate memory");
 		return (1);
 	}
+
 	signal(SIGINT, sigHandler);
 	signal(SIGTSTP, SIG_IGN);
 
-	while (1)
+	if (!isatty(STDIN_FILENO))
 	{
-		write(STDOUT_FILENO, prompt, _strlen(prompt));
-
-		if (getline(&line, &size, stdin) == -1)
-			break;
-		if (_strcmp(line, ENTER) == 0)
-			continue;
-		if (_strcmp(line, EXIT) == 0)
-		{
-			free(line);
-			exit(0);
-		}
-		av = create_av(line);
-		if (check_cmd(av) == 1)
-		{
-			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
-			write(STDOUT_FILENO, notfound, _strlen(notfound));
-			continue;
-		}
-		_execve(av[0], av, env, argv[0]);
+		pshell(line, size, av, argv, env);
+		free(line);
+		return (0);
 	}
+
+	tshell(line, size, av, argv, env);
 
 	free(line);
 	return (0);
