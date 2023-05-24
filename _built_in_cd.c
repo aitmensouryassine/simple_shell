@@ -4,27 +4,27 @@
 
 /**
  * _built_in_cd - To change the current working directory
- * @args: Represents an array of arguments
+ * @argmts: Represents an array of arguments
  */
-void _built_in_cd(char **args)
+void _built_in_cd(char **argmts)
 {
-	char *direc = args[1];
-	int ret;
+        char *direc = argmts[1];
+        int retn;
 
-	/* If there are no arguments, change to HOME directory */
-	if (direc == NULL)
-	{
-		direc = _getenv("HOME");
-		if (direc == NULL)
-		{
-			_puts("cd: No HOME directory found\n");
-			return;
-		}
-	}
+        /* If there are no arguments, it will change to HOME directory */
+        if (direc == NULL)
+        {
+                direc = _getenv("HOME");
+                if (direc == NULL)
+                {
+                        _puts("cd: No HOME directory found\n");
+                        retnurn;
+                }
+        }
 
-	ret = chdir(direc);
-	if (ret == -1)
-	{
-		perror("cd");
-	}
+        retn = chdir(direc);
+        if (retn == -1)
+        {
+                perror("cd");
+        }
 }
