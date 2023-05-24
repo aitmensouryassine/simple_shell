@@ -17,7 +17,9 @@ char *_getenv(const char *name);
 int check_cmd(char **av);
 void _perror(char *message, char *name, char **av);
 void myexit(char *st, char *name, char **av);
-void *get_line(void);
+void *_get_line(void);
+char *_get_input(void);
+void _free_last_input(void);
 
 /* HELPERS */
 int _strlen(const char *str);
