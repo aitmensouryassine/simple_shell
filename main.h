@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdio.h>
+#include <unistd.h>
 
 extern char **environ;
 #define EXIT "exit\n"
@@ -12,8 +13,12 @@ void _execve(char *cmd, char **args, char **env, char *name);
 char **create_av(char *line);
 char *_getenv(const char *name);
 int check_cmd(char **av);
+<<<<<<< HEAD
 void tshell(char *line, size_t size, char **av, char **argv, char **env);
 void pshell(char *line, size_t size, char **av, char **argv, char **env);
+=======
+void _built_in_cd(char **argmts)
+>>>>>>> e75567f13cfa123a269f8370b8c3bfe5ee340673
 
 /* HELPERS */
 int _strlen(const char *str);
@@ -21,9 +26,11 @@ void _strcpy(char *dest, const char *src);
 void _strcat(char *dest, const char *src);
 int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
+int chdir( const char * path );
 
 /* SIGNAL HANDLERS */
 void sigHandler(int sig);
+
 /*alias*/
 typedef struct alias
 {
@@ -31,5 +38,6 @@ typedef struct alias
 	char *value;
 	struct alias *next;
 } alias;
+
 
 #endif

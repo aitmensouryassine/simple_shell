@@ -1,6 +1,7 @@
 #include "main.h"
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * _built_in_cd - To change the current working directory
