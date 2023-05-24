@@ -199,3 +199,14 @@ void _puts(char *_string)
 		perror("write");
 	}
 }
+
+/**
+ * prompt - Prints the shell prompt to stdin stream.
+ *
+ * Return: Void.
+ */
+void prompt(void)
+{
+	_puts(PROMPT);
+	fflush(stdout);
+}

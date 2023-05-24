@@ -21,6 +21,7 @@ void *_get_line(void);
 char *_get_input(void);
 void _free_last_input(void);
 void _puts(char *str);
+void prompt(void);
 
 /* HELPERS */
 int _strlen(const char *str);
