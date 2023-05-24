@@ -8,7 +8,6 @@ extern char **environ;
 #define EXIT "exit"
 #define ENTER "\n"
 #define SPACE " \n "
-#define BUFF_SIZE 1024
 
 /* FUNCTIONS */
 void _execve(char *cmd, char **args, char **env, char *name);
@@ -17,18 +16,6 @@ char *_getenv(const char *name);
 int check_cmd(char **av);
 void _perror(char *message, char *name, char **av);
 void myexit(char *st, char *name, char **av);
-void *_get_line(void);
-char *_get_input(void);
-void _free_last_input(void);
-void _puts(char *str);
-void prompt(void);
-int _check_char(char s, const char *_string)
-char *_strtok(char *_string, const char *delim);
-void _built_in_exit(char **args);
-int _built_ins_setenv(char **argmts);
-int _built_ins_unsetenv(char **argmts);
-void _built_in_cd(char **argmts)
-
 
 /* HELPERS */
 int _strlen(const char *str);

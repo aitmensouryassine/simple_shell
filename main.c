@@ -51,4 +51,5 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		_execve(av[0], av, env, argv[0]);
 	}
 	free(line);
+	return (0);
 }
