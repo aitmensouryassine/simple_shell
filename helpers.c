@@ -210,3 +210,18 @@ void prompt(void)
 	_puts(PROMPT);
 	fflush(stdout);
 }
+
+/**
+ * free_tokens - Frees the memory allocated dynamically by the tokenize()
+ * @pointr: pointer to allocated memory
+ *
+ * Return: void.
+ */
+void free_tokens(char **pointr)
+{
+	int i;
+
+	for (i = 0; pointr[i]; i++)
+		free((pointr[i]));
+	free(pointr);
+}
