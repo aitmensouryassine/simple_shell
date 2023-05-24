@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 extern char **environ;
-#define EXIT "exit\n"
+#define EXIT "exit"
 #define ENTER "\n"
 #define SPACE " \n"
 

@@ -149,3 +149,4 @@ void pnum(int n)
 
 	write(STDOUT_FILENO, &num, 1);
 }
+
