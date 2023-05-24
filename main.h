@@ -7,7 +7,8 @@
 extern char **environ;
 #define EXIT "exit"
 #define ENTER "\n"
-#define SPACE " \n"
+#define SPACE " \n "
+#define BUFF_SIZE 1024
 
 /* FUNCTIONS */
 void _execve(char *cmd, char **args, char **env, char *name);
@@ -18,6 +19,7 @@ void tshell(char *line, size_t size, char **av, char **argv, char **env);
 void pshell(char *line, size_t size, char **av, char **argv, char **env);
 void _perror(char *message, char *name, char **av);
 void myexit(char *st, char *name, char **av);
+void *get_line(void);
 
 /* HELPERS */
 int _strlen(const char *str);
