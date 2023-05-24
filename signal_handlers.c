@@ -1,5 +1,6 @@
-#include <stdio.h>
+#include "main.h"
 #include <signal.h>
+#include <unistd.h>
 
 /**
  * sigHandler - signals handler
@@ -7,9 +8,10 @@
  */
 void sigHandler(int sig)
 {
+	char prompt[] = "\n$ ";
+
 	if (sig == SIGINT)
 	{
-		printf("\n$ ");
-		fflush(stdout);
+		write(STDOUT_FILENO, prompt, _strlen(prompt));
 	}
 }

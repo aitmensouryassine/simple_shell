@@ -17,6 +17,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	size_t size = 1;
 	char **av;
 	char prompt[] = "$ ";
+	char notfound[] = ": No such file or directory\n";
 
 	line = malloc(sizeof(char) * size);
 	if (!line)
@@ -24,7 +25,6 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		perror("Can't allocate memory");
 		return (1);
 	}
-
 	signal(SIGINT, sigHandler);
 	signal(SIGTSTP, SIG_IGN);
 
@@ -44,7 +44,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		av = create_av(line);
 		if (check_cmd(av) == 1)
 		{
-			printf("%s: No such file or directory\n", argv[0]);
+			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+			write(STDOUT_FILENO, notfound, _strlen(notfound));
 			continue;
 		}
 		_execve(av[0], av, env, argv[0]);
