@@ -33,17 +33,12 @@ void tshell(char *line, size_t size, char **av, char **argv, char **env)
 		if (_strcmp(av[0], EXIT) == 0)
 		{
 			free(line);
-
-			if (!av[1])
-				status = 0;
-			else
-				status = atoi(av[1]);
-			exit(status);
+			__exit(av[1]);
 		}
 
 		if (check_cmd(av) == 1)
 		{
-			cmd_not_found(argv[0], av);
+			_perror("not found", argv[0], av);
 			continue;
 		}
 

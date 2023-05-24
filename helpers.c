@@ -105,10 +105,10 @@ int _strncmp(const char *s1, const char *s2, size_t n)
  * @name: name of the program
  * @av: the command
  */
-void cmd_not_found(char *name, char **av)
+void _perror(char *message, char *name, char **av)
 {
 	static int call = 1;
-	char notfound[] = ": not found\n", sep[] = ":", sp[] = " ";
+	char sep[] = ":", sp[] = " ";
 
 	write(STDOUT_FILENO, name, _strlen(name));
 	write(STDOUT_FILENO, sep, 1);
@@ -117,7 +117,9 @@ void cmd_not_found(char *name, char **av)
 	write(STDOUT_FILENO, sep, 1);
 	write(STDOUT_FILENO, sp, 1);
 	write(STDOUT_FILENO, av[0], _strlen(av[0]));
-	write(STDOUT_FILENO, notfound, _strlen(notfound));
+	write(STDOUT_FILENO, sep, 1);
+	write(STDOUT_FILENO, sp, 1);
+	write(STDOUT_FILENO, message, _strlen(message));
 
 	call = call + 1;
 }

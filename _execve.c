@@ -16,11 +16,17 @@ void _execve(char *cmd, char **args, char **env, char *name)
 	int i = 0;
 
 	if (pid == -1)
-		perror("Error forking parent process");
+	{
+		perror("Error:");
+		exit(1);
+	}
 	else if (pid == 0)
 	{
 		if (execve(cmd, args, env))
+		{
 			perror(name);
+			exit(1);
+		}
 	}
 	else
 	{
