@@ -20,6 +20,7 @@ void myexit(char *st, char *name, char **av);
 void *_get_line(void);
 char *_get_input(void);
 void _free_last_input(void);
+void _puts(char *str);
 
 /* HELPERS */
 int _strlen(const char *str);
