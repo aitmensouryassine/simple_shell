@@ -12,6 +12,7 @@ void _execve(char *cmd, char **args, char **env, char *name);
 char **create_av(char *line);
 char *_getenv(const char *name);
 int check_cmd(char **av);
+void _built_in_cd(char **argmts)
 
 /* HELPERS */
 int _strlen(const char *str);
@@ -22,6 +23,7 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* SIGNAL HANDLERS */
 void sigHandler(int sig);
+
 /*alias*/
 typedef struct alias
 {
@@ -29,5 +31,6 @@ typedef struct alias
 	char *value;
 	struct alias *next;
 } alias;
+
 
 #endif
