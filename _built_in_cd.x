@@ -18,7 +18,7 @@ void _built_in_cd(char **argmts)
                 if (direc == NULL)
                 {
                         _puts("cd: No HOME directory found\n");
-                        retnurn;
+                        return;
                 }
         }
 

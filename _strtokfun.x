@@ -32,8 +32,10 @@ char *_strtok(char *_string, const char *delim)
 	unsigned int i;
 
 		if (_string != NULL)
+		{
 			new_token = _string;
 			tokens = new_token;
+		}
 		if (tokens == NULL)
 			return (NULL);
 		for (i = 0; tokens[i] != '\0'; i++)

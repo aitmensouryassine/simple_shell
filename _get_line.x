@@ -1,6 +1,8 @@
 #include "main.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 /**
  * _get_line - Allows to read the input from the standard input.
  *
@@ -18,7 +20,7 @@ void *_get_line(void)
 	{
 		if (buf_position >= buf_size)
 		{
-			buf_size = read(STDIN_FILENO, buf, BUFF_SIZE);
+			buf_size = read(STDIN_FILENO, buff, BUFF_SIZE);
 			buf_position = 0;
 			if (buf_size == 0)
 				return (input_str);

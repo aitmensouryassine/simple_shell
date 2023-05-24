@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
 
 /**
  * main - Simple shell in c
@@ -15,6 +16,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	char *line;
 	size_t size = 1;
 	char **av;
+	char prompt[] = "$ ";
 
 	line = malloc(sizeof(char) * size);
 	if (!line)
@@ -28,7 +30,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	while (1)
 	{
-		printf("$ ");
+		write(STDOUT_FILENO, prompt, _strlen(prompt));
+
 		if (getline(&line, &size, stdin) == -1)
 			break;
 		if (_strcmp(line, ENTER) == 0)
