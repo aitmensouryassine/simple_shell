@@ -25,6 +25,10 @@ void prompt(void);
 int _check_char(char s, const char *_string)
 char *_strtok(char *_string, const char *delim);
 void _built_in_exit(char **args);
+int _built_ins_setenv(char **argmts);
+int _built_ins_unsetenv(char **argmts);
+void _built_in_cd(char **argmts)
+
 
 /* HELPERS */
 int _strlen(const char *str);
