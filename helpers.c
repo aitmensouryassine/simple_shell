@@ -1,4 +1,6 @@
-#include <stdio.h>
+#include <unistd.h>
+
+void pnum(int n);
 
 /**
  * _strlen - returns the length of a string
@@ -96,4 +98,54 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	}
 
 	return (cmp);
+}
+
+/**
+ * cmd_not_found - prints cmd not found
+ * @name: name of the program
+ * @av: the command
+ */
+void cmd_not_found(char *name, char **av)
+{
+	static int call = 1;
+	char notfound[] = ": not found\n", sep[] = ":", sp[] = " ";
+
+	write(STDOUT_FILENO, name, _strlen(name));
+	write(STDOUT_FILENO, sep, 1);
+	write(STDOUT_FILENO, sp, 1);
+	pnum(call);
+	write(STDOUT_FILENO, sep, 1);
+	write(STDOUT_FILENO, sp, 1);
+	write(STDOUT_FILENO, av[0], _strlen(av[0]));
+	write(STDOUT_FILENO, notfound, _strlen(notfound));
+
+	call = call + 1;
+}
+
+/**
+ * pnum - prints a number
+ * @n: the number to print
+*/
+void pnum(int n)
+{
+	char minus[] = "-";
+	unsigned int x;
+	char num;
+
+	if (n < 0)
+	{
+		x = -n;
+		write(STDOUT_FILENO, minus, 1);
+	} else
+	{
+		x = n;
+	}
+
+	if (x / 10)
+	{
+		pnum(x / 10);
+	}
+	num = (x % 10) + '0';
+
+	write(STDOUT_FILENO, &num, 1);
 }

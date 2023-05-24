@@ -12,8 +12,6 @@
  */
 void pshell(char *line, size_t size, char **av, char **argv, char **env)
 {
-	char notfound[] = ": No such file or directory\n";
-
 	while (getline(&line, &size, stdin) != -1)
 	{
 		if (_strcmp(line, ENTER) == 0)
@@ -29,8 +27,7 @@ void pshell(char *line, size_t size, char **av, char **argv, char **env)
 
 		if (check_cmd(av) == 1)
 		{
-			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
-			write(STDOUT_FILENO, notfound, _strlen(notfound));
+			cmd_not_found(argv[0], av);
 			continue;
 		}
 
