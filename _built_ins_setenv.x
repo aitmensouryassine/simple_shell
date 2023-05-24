@@ -10,23 +10,23 @@
  */
 int _built_ins_setenv(char **argmts)
 {
-        char *_name, *value;
+	char *_name, *value;
 
-        if (argmts[1] == NULL || argmts[2] == NULL)
-        {
-                _puterror("Usage: setenv VARIABLE VALUE\n");
-                return (-1);
-        }
+	if (argmts[1] == NULL || argmts[2] == NULL)
+	{
+		_puterror("Usage: setenv VARIABLE VALUE\n");
+		return (-1);
+	}
 
-        _name = argmts[1];
-        value = argmts[2];
+	_name = argmts[1];
+	value = argmts[2];
 
-        if (setenv(_name, value, 1) != 0)
-        {
-                _puterror("setenv");
-                return (-1);
-        }
-        return (0);
+	if (setenv(_name, value, 1) != 0)
+	{
+		_puterror("setenv");
+		return (-1);
+	}
+	return (0);
 }
 
 /**
@@ -37,19 +37,19 @@ int _built_ins_setenv(char **argmts)
  */
 int _built_ins_unsetenv(char **argmts)
 {
-        char *_name;
+	char *_name;
 
-        if (argmts[1] == NULL)
-        {
-                _puterror("Usage: unsetenv VARIABLE\n");
-                return (-1);
-        }
+	if (argmts[1] == NULL)
+	{
+		_puterror("Usage: unsetenv VARIABLE\n");
+		return (-1);
+	}
 
-        _name = argmts[1];
+	_name = argmts[1];
 
-        if (unsetenv(_name) != 0)
-        {
-                _puterror("unsetenv");
-        }
-        return (0);
+	if (unsetenv(_name) != 0)
+	{
+		_puterror("unsetenv");
+	}
+	return (0);
 }

@@ -22,5 +22,12 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* SIGNAL HANDLERS */
 void sigHandler(int sig);
+/*alias*/
+typedef struct alias
+{
+	char *key;
+	char *value;
+	struct alias *next;
+} alias;
 
 #endif
