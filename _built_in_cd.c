@@ -16,15 +16,6 @@ void _built_in_cd(char **argmts)
         {
                 direc = _getenv("HOME");
                 if (direc == NULL)
-                {
-                        _puts("cd: No HOME directory found\n");
-                        retnurn;
-                }
-        }
-
-        retn = chdir(direc);
-        if (retn == -1)
-        {
-                perror("cd");
+                      perror("cd");
         }
 }
