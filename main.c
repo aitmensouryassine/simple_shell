@@ -16,6 +16,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	char *line;
 	size_t size = 1;
 	char **av = NULL;
+	char prompt[] = "$ ";
 
 	line = malloc(sizeof(char) * size);
 	if (!line)
@@ -27,14 +28,36 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	signal(SIGINT, sigHandler);
 	signal(SIGTSTP, SIG_IGN);
 
-	if (!isatty(STDIN_FILENO))
+	while (1)
 	{
-		pshell(line, size, av, argv, env);
-		free(line);
-		return (0);
-	}
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, prompt, _strlen(prompt));
+		fflush(stdout);
 
-	tshell(line, size, av, argv, env);
+		if (getline(&line, &size, stdin) == -1)
+			break;
+
+		if (_strcmp(line, ENTER) == 0)
+			continue;
+
+		av = create_av(line);
+		if (!av)
+			continue;
+
+		if (_strcmp(av[0], EXIT) == 0)
+		{
+			free(line);
+			myexit(av[1], argv[0], av);
+		}
+
+		if (check_cmd(av) == 1)
+		{
+			_perror("not found\n", argv[0], av);
+			continue;
+		}
+
+		_execve(av[0], av, env, argv[0]);
+	}
 
 	free(line);
 	return (0);
