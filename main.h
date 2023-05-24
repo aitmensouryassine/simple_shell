@@ -22,6 +22,8 @@ char *_get_input(void);
 void _free_last_input(void);
 void _puts(char *str);
 void prompt(void);
+int _check_char(char s, const char *_string)
+char *_strtok(char *_string, const char *delim)
 
 /* HELPERS */
 int _strlen(const char *str);
