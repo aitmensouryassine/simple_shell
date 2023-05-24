@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 /**
  * myexit - exit
@@ -23,7 +25,9 @@ void myexit(char *st, char *name, char **av)
 			status = 0;
 		}
 		else
-			status = _atoi(st);
+		{
+			status = atoi(st);
+		}
 	}
 	exit(status);
 }
