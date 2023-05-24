@@ -6,6 +6,8 @@
 /**
  * myexit - exit
  * @st: exit status
+ * @name: shell
+ * @av: command
  */
 void myexit(char *st, char *name, char **av)
 {
@@ -16,8 +18,9 @@ void myexit(char *st, char *name, char **av)
 		status = 0;
 	else if (st[0] == '0')
 		status = 0;
-	else {
-		if(_atoi(st) == 0)
+	else
+	{
+		if (_atoi(st) == 0)
 		{
 			_strcat(errmsg, st);
 			_strcat(errmsg, "\n");

@@ -101,7 +101,8 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 }
 
 /**
- * cmd_not_found - prints cmd not found
+ * _perror - prints error
+ * @message: error msg
  * @name: name of the program
  * @av: the command
  */
