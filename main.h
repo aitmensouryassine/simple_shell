@@ -25,6 +25,7 @@ int _strcmp(const char *s1, const char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 void cmd_not_found(char *name, char **av);
 void pnum(int n);
+int _atoi(const char *_string);
 
 /* SIGNAL HANDLERS */
 void sigHandler(int sig);
