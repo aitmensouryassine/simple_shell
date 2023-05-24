@@ -14,7 +14,6 @@
 void tshell(char *line, size_t size, char **av, char **argv, char **env)
 {
 	char prompt[] = "$ ";
-	int status;
 
 	while (1)
 	{
@@ -33,12 +32,12 @@ void tshell(char *line, size_t size, char **av, char **argv, char **env)
 		if (_strcmp(av[0], EXIT) == 0)
 		{
 			free(line);
-			__exit(av[1]);
+			myexit(av[1], argv[0], av);
 		}
 
 		if (check_cmd(av) == 1)
 		{
-			_perror("not found", argv[0], av);
+			_perror("not found\n", argv[0], av);
 			continue;
 		}
 

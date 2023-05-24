@@ -16,6 +16,8 @@ char *_getenv(const char *name);
 int check_cmd(char **av);
 void tshell(char *line, size_t size, char **av, char **argv, char **env);
 void pshell(char *line, size_t size, char **av, char **argv, char **env);
+void _perror(char *message, char *name, char **av);
+void myexit(char *st, char *name, char **av);
 
 /* HELPERS */
 int _strlen(const char *str);

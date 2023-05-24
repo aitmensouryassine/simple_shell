@@ -1,18 +1,29 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * __exit - exit
+ * myexit - exit
  * @st: exit status
  */
-void __exit(char *st)
+void myexit(char *st, char *name, char **av)
 {
-	int status;
+	int status = 0;
+	char errmsg[50] = "Illegal number: ";
 
 	if (!st)
 		status = 0;
-	else
-		status = atoi(st);
-        }
-
+	else if (st[0] == '0')
+		status = 0;
+	else {
+		if(_atoi(st) == 0)
+		{
+			_strcat(errmsg, st);
+			_strcat(errmsg, "\n");
+			_perror(errmsg, name, av);
+			status = 0;
+		}
+		else
+			status = _atoi(st);
+	}
 	exit(status);
 }

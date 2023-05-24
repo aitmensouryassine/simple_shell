@@ -12,8 +12,6 @@
  */
 void pshell(char *line, size_t size, char **av, char **argv, char **env)
 {
-	int status;
-
 	while (getline(&line, &size, stdin) != -1)
 	{
 		if (_strcmp(line, ENTER) == 0)
@@ -26,7 +24,7 @@ void pshell(char *line, size_t size, char **av, char **argv, char **env)
 		if (_strcmp(av[0], EXIT) == 0)
 		{
 			free(line);
-			__exit(av[1]);
+			myexit(av[1], argv[0], av);
 		}
 
 		if (check_cmd(av) == 1)
