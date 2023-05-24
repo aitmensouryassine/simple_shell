@@ -54,7 +54,6 @@ char **create_av(char *line)
 	chop = strtok(line, del);
 	while (chop)
 	{
-		write(STDOUT_FILENO, chop, _strlen(chop));
 		/* copy chop into arg */
 		av[i] = malloc(_strlen(chop) + 1);
 		if (!av[i])
